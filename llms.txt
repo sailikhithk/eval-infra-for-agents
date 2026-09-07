@@ -1,0 +1,70 @@
+# Eval Infrastructure for Agent Systems
+
+> A field guide to building production-grade evaluation infrastructure for LLM agent systems. Based on real production work at Airbnb (BPI Virtual Analyst), Shell (NLP classification), and contributions to LangChain, LiveKit, and Ragas.
+> Source: https://github.com/sailikhithk/eval-infra-for-agents
+
+Most LLM agent evaluation is ad hoc. Teams ship agents to production with manual spot-checks, vibe-based quality assessments, and no systematic way to detect regressions when prompts, models, or retrieval pipelines change. This handbook is a field guide for ML engineers who need to build real evaluation infrastructure: the kind that runs 23+ agent versions against 1,690 versioned ground-truth samples, detects regressions before they reach production, and gives the team confidence to ship.
+
+## What you will learn
+
+- How to build a reproducible evaluation harness that runs multiple agent versions against versioned ground-truth samples
+- How to design dual-model A/B comparison and flip-analysis to detect regressions
+- How to orchestrate 30+ LLM integrations behind a unified abstraction (FacadeDriver pattern)
+- How to implement PII-safe batching and streaming pipelines for eval at scale
+- How to track LLM costs accurately across providers (the gap that LangChain PR #39351 fixed)
+- How to score agent reliability after a call ends (the LiveKit ReliabilityObserver pattern)
+- How to build a culture of test-first agent development
+
+## Chapters
+
+- [Chapter 1: The Eval Problem](chapters/01-the-eval-problem.md) - Why ad hoc eval fails at scale
+- [Chapter 2: Ground Truth](chapters/02-ground-truth.md) - Building a versioned sample store with PII redaction (1,690 samples)
+- [Chapter 3: The FacadeDriver Pattern](chapters/03-facadedriver.md) - Multi-LLM orchestration (30+ models behind one interface)
+- Chapter 4: Dual-Model A/B and Flip Analysis (planned)
+- Chapter 5: Cost Tracking at Scale (planned)
+- Chapter 6: Reliability Scoring After Call End (planned)
+- Chapter 7: PII-Safe Batching and Streaming (planned)
+- Chapter 8: Scaling from 600 to 10,000 Rows Per Run (planned)
+- Chapter 9: Building an Agent Quality Program (planned)
+- Chapter 10: Open-Source Eval Tools (planned)
+
+## Notebooks
+
+- [facadedriver_abstraction.ipynb](notebooks/facadedriver_abstraction.ipynb) - Interactive FacadeDriver pattern walkthrough
+
+## Production numbers
+
+- 23+ agent versions tracked
+- 1,690 versioned ground-truth samples
+- 30+ LLM integrations behind FacadeDriver
+- 128+ users across 4 teams at Airbnb
+- F1 0.654 (project-best)
+- LLM-as-Judge gate: precision < 0.85 blocks production
+- Scaled from 600 to 10,000 rows per run (40MB uploads, PII-safe)
+
+## Other AI/ML work by Sai Likhith Kanuparthi
+
+Brand focus: Production evals + medical + finance AI.
+
+- [facadedriver](https://github.com/sailikhithk/facadedriver) - Model-agnostic orchestration for multi-LLM production systems: routing, retry, fallback, circuit breakers, per-request telemetry.
+- [llm-production-engineering](https://github.com/sailikhithk/llm-production-engineering) - Field notes on LLM serving in production: cost tracking, eval-driven deployment, capacity planning, incident playbooks.
+- [Synthetic-AI-Image-Detector](https://github.com/sailikhithk/Synthetic-AI-Image-Detector) - 6-signal AI image detection with calibration, uncertainty quantification, and cross-generator eval.
+- [lims-omi](https://github.com/sailikhithk/lims-omi) - 21 CFR Part 11 compliance collaboration platform for cross-hub laboratory task management.
+- [alzheimers-drug-discovery-demo](https://github.com/sailikhithk/alzheimers-drug-discovery-demo) - QSAR machine learning for Alzheimer's drug discovery.
+- [CreditCardFraudDetectionUsingKafka](https://github.com/sailikhithk/CreditCardFraudDetectionUsingKafka) - Real-time fraud detection with Kafka, Spark EMR, and AWS Lambda.
+
+## Author
+
+Sai Likhith Kanuparthi - Senior AI Infrastructure & Systems Engineer.
+7+ years shipping production AI systems at Airbnb, Southwest Airlines, Shell,
+Eli Lilly, and Oracle. MS Computer Science from NYU.
+
+Brand: Production evals + medical + finance AI.
+
+- GitHub: https://github.com/sailikhithk
+- LinkedIn: https://www.linkedin.com/in/sailikhithk
+- Portfolio: https://sailikhith.me
+
+## License
+
+MIT
